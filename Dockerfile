@@ -1,6 +1,7 @@
 FROM ubuntu:12.04 
 MAINTAINER Taku Nakajima <takunakajima@gmail.com>
 
+ENV SDKURL http://googleappengine.googlecode.com/files/google_appengine_1.8.8.zip
 ENV USER gae
 ENV PASSWORD python
 ENV ROOTPASSWORD root-defaultpass
@@ -20,10 +21,14 @@ RUN echo deb http://us.archive.ubuntu.com/ubuntu/ precise universe multiverse >>
 RUN apt-get install -y openssh-server && mkdir /var/run/sshd 
 RUN echo "root:${ROOTPASSWORD}" |chpasswd
 
-
 # Install Additional packages
 
-RUN apt-get install -y sudo lv w3m wget curl 
+RUN apt-get install -y sudo lv w3m wget curl zip python2.7
+
+# Install Google AppEngine for python SDK
+
+ADD $SDKURL /tmp/gae.zip
+RUN cd /usr/local && unzip /tmp/gae.zip
 
 # Add user
 
