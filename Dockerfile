@@ -23,12 +23,12 @@ RUN echo "root:${ROOTPASSWORD}" |chpasswd
 
 # Install Additional packages and dependancies
 
-RUN apt-get install -y sudo lv w3m wget curl zip git vim build-essential zlib1g-dev libyaml-dev libssl-dev libgdbm-dev libreadline-dev libncurses5-dev libffi-dev checkinstall libxml2-dev libxslt-dev libcurl4-openssl-dev libicu-dev  libfontconfig1
+RUN apt-get install -y sudo lv w3m wget curl zip zsh git vim build-essential zlib1g-dev libyaml-dev libssl-dev libgdbm-dev libreadline-dev libncurses5-dev libffi-dev checkinstall libxml2-dev libxslt-dev libcurl4-openssl-dev libicu-dev  libfontconfig1
 
 # Install popular python packages
 
 RUN apt-get install -y python2.7 python-pyquery python-nose python-webtest python-pip python-docutils python-software-properties
-RUN pip install NoseGAE mock
+RUN pip install NoseGAE mock coverage pylint
 
 # Install Google AppEngine for python SDK
 
